@@ -14,6 +14,10 @@ public class Vehicle {
         this.Passengers= new ArrayList<>();
         this.passengerCount=0;
     }
+    public String getName()
+    {
+        return  this.Name;
+    }
     public void increasePassengers()
     {
         this.passengerCount +=1;
