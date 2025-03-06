@@ -1,3 +1,5 @@
+package Main;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -8,22 +10,25 @@ public class Main
     public static final ArrayList<Vehicle> Garage= new ArrayList<>();
     public static void main(String[] args)
     {
-        Person Driver = new Person("Hitler", "Adolf", 40, 180, 79, "Dictator");
-        Person Wife = new Person("Laden", "Bin", 40, 180, 79, "Dictator");
-        Person Son1 = new Person("Mufasa", "Kille", 40, 180, 79, "Dictator");
-        Person Son2 = new Person("Kingga", "Linoe", 40, 180, 79, "Dictator");
-        Person Daughter1 = new Person("Jafar", "Abdul", 40, 180, 79, "Dictator");
+        //Testing
+        // Person Driver = new Person("Hitler", "Adolf", 40, 180, 79, "Dictator");
+        // Person Wife = new Person("Laden", "Bin", 40, 180, 79, "Dictator");
+        // Person Son1 = new Person("Mufasa", "Kille", 40, 180, 79, "Dictator");
+        // Person Son2 = new Person("Kingga", "Linoe", 40, 180, 79, "Dictator");
+        // Person Daughter1 = new Person("Jafar", "Abdul", 40, 180, 79, "Dictator");
 
-        Persons.add(Driver);
-        Persons.add(Wife);
-        Persons.add(Son1);
-        Persons.add(Son2);
-        Persons.add(Daughter1);
+        // System.out.println(Driver.getFullname());
 
-        // // Initiating new Vehicle, Car.
-        Vehicle Car = new Vehicle("Tesla", "N1G6A", 5);
-        Garage.add(Car);
-        // // Loading Passengers 
+        // Persons.add(Driver);
+        // Persons.add(Wife);
+        // Persons.add(Son1);
+        // Persons.add(Son2);
+        // Persons.add(Daughter1);
+
+        // // // Initiating new Vehicle, Car.
+        // Vehicle Car = new Vehicle("Tesla", "N1G6A", 5);
+        // Garage.add(Car);
+        // // // Loading Passengers 
         // Car.addPassenger(Driver);
         // System.out.println(Driver);
         // Car.addPassenger(Wife);

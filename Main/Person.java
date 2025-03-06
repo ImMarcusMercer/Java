@@ -1,3 +1,5 @@
+package Main;
+
 public class Person {
     String Lname, Fname;
     int age;
@@ -13,6 +15,24 @@ public class Person {
         this.Weight= Weight;
         this.PersonType= PersonType;
     }
+    public String getLname() {
+        return Lname;
+    }
+    public String getFname() {
+        return Fname;
+    }
+    public int getAge() {
+        return age;
+    }
+    public double getHeight() {
+        return Height;
+    }
+    public double getWeight() {
+        return Weight;
+    }
+    public String getPersonType() {
+        return PersonType;
+    }
     /**Calculate Body Mass Index
      * @param - Weight of Person
      * @param - Height of Person in cm
@@ -26,7 +46,8 @@ public class Person {
         }
     public String getFullname()
     {
-        return String.format("%s, %s", this.Lname, this.Fname);
+        // return String.format("%s, %s", this.Lname, this.Fname);
+        return this.Lname+this.Fname;
     }
     @Override
     public String toString()
