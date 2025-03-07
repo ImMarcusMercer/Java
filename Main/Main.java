@@ -1,6 +1,6 @@
 package Main;
 
-import Comparator.AgeComparator;
+import Comparator.*;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Scanner;
@@ -8,18 +8,18 @@ import java.util.Scanner;
 public class Main
 {
     public static final Scanner input=new Scanner(System.in);
-    public static final ArrayList<Person> Persons= new ArrayList<>();
-    public static final ArrayList<Vehicle> Garage= new ArrayList<>();
+    public static  ArrayList<Person> Persons= new ArrayList<>();
+    public static  ArrayList<Vehicle> Garage= new ArrayList<>();
     
     //Main Method
     public static void main(String[] args)
     {
         //Testing
-        Person Driver = new Person("Hitler", "Adolf", 40, 180, 20, "Dictator");
-        Person Wife = new Person("Laden", "Bin", 40, 180, 73, "Dictator");
-        Person Son1 = new Person("Mufasa", "Kille", 40, 180, 49, "Dictator");
-        Person Son2 = new Person("Kingga", "Linoe", 40, 180, 19, "Dictator");
-        Person Daughter1 = new Person("Jafar", "Abdul", 40, 180, 40, "Dictator");
+        Person Driver = new Person("Hitler", "Adolf", 41, 189, 72, "Dictator");
+        Person Wife = new Person("Laden", "Bin", 24, 110, 73, "Dictator");
+        Person Son1 = new Person("Mufasa", "Kille", 20, 150, 49, "Dictator");
+        Person Son2 = new Person("Kingga", "Linoe", 47, 169, 90, "Dictator");
+        Person Daughter1 = new Person("Jafar", "Abdul", 14, 126, 40, "Dictator");
 
         Persons.add(Driver);
         Persons.add(Wife);
@@ -29,16 +29,15 @@ public class Main
 
         // System.out.println(Driver.getFullname());
 
-        // // // Initiating new Vehicle, Car.
-        // Vehicle Car = new Vehicle("Tesla", "N1G6A", 5);
-        // Garage.add(Car);
-        // // // Loading Passengers 
-        // Car.addPassenger(Driver);
-        // System.out.println(Driver);
-        // Car.addPassenger(Wife);
-        // Car.addPassenger(Son1);
-        // Car.addPassenger(Son2);
-        // Car.addPassenger(Daughter1);
+        // Initiating new Vehicle, Car.
+        Vehicle Car = new Vehicle("Tesla", "N1G6A", 5);
+        Garage.add(Car);
+        // Loading Passengers 
+        Car.addPassenger(Driver);
+        Car.addPassenger(Wife);
+        Car.addPassenger(Son1);
+        Car.addPassenger(Son2);
+        Car.addPassenger(Daughter1);
 
         // //Displaying details
         // System.out.println(Car);
@@ -61,25 +60,41 @@ public class Main
             switch(choice)
             {
                 //Vehicle options
-                case "1"->{ 
-                    System.out.println("1: View Vehicles\n2: Create New Vehicle\n0: Retire");
-                    String choice1= Prompt("Enter Choice: ");
-                    switch (choice1) {
-                        case "1" -> {
-                            showVehicles();
-                        }
+                case "1"->
+                { 
+                    Cars:
+                    while(true)
+                    {
+                        System.out.println("\n1: View Vehicles\n2: Create New Vehicle\n0: Retire");
+                        String choice1= Prompt("Enter Choice: ");
+                        switch (choice1) 
+                        {
+                            case "1" -> {
+                                showVehicles();
+                                String vehicleChoice= Prompt("0: Return\nChoice:");
+                                if(Integer.parseInt(vehicleChoice) >=0 && Integer.parseInt(vehicleChoice)<Garage.size())
+                                {
+                                    
+                                }
+                                switch (vehicleChoice) 
+                                {
+                                    case "0"->
+                                    {
+                                        break;
+                                    }
+                                }
+                            }
 
-                        case "2"-> {
-                            Vehicle newVehicle = constructVehicle();
-                            Garage.add(newVehicle);
-                        }
+                            case "2"-> {
+                                Vehicle newVehicle = constructVehicle();
+                                Garage.add(newVehicle);
+                            }
 
-                        case "0" -> {
-                            break;
+                            case "0" -> {
+                                break Cars;
+                            }
                         }
-
-                        default -> throw new AssertionError();
-                        }
+                    }
                 }
                 //Person Options
                 case "2"-> 
@@ -89,8 +104,7 @@ public class Main
                     {
                         System.out.println();
                         showPassengers();
-                        System.out.println("1: Create New Person\n2: Sort\n0: Retire\nChoice: ");
-                        String choice2= Prompt("Enter Choice: ");
+                        String choice2= Prompt("1: Create New Person\n2: Sort\n0: Retire\nChoice: ");
                         switch (choice2) 
                         {
                             
@@ -109,10 +123,10 @@ public class Main
                                     switch(choice2_1)
                                     {
                                         case "1"->{sortPeople(Persons, new AgeComparator());break sorter;}
-                                        case "2"->{sortPeople(Persons, new AgeComparator());break sorter;}
-                                        case "3"->{sortPeople(Persons, new AgeComparator());break sorter;}
-                                        case "4"->{sortPeople(Persons, new AgeComparator());break sorter;}
-                                        case "5"->{sortPeople(Persons, new AgeComparator());break sorter;}
+                                        case "2"->{sortPeople(Persons, new BMIComparator());break sorter;}
+                                        case "3"->{sortPeople(Persons, new FullnameComparator());break sorter;}
+                                        case "4"->{sortPeople(Persons, new LastnameComparator());break sorter;}
+                                        case "5"->{sortPeople(Persons, new PersonTypeComparator());break sorter;}
                                         case "0"->{break sorter;}
                                     }
                                 }
@@ -135,7 +149,9 @@ public class Main
     }
     public static String Prompt(String value)
     {
-        String answer = input.nextLine();
+        System.out.print(value);
+        String answer;
+        answer = input.nextLine();
         return answer;
     }
 
@@ -143,38 +159,26 @@ public class Main
     public static void showVehicles()
     {
         String garage = "======Garage=====";
+        int count=1;
         for(Vehicle vehicle:Garage)
         {
-            garage+="\n"+vehicle.getName();
+            garage+="\n"+count+": "+vehicle.getName();
+            count++;
         }
         garage+="\n";
+        
 
         System.out.println(garage);
     }
     public static void showPassengers()
     {
-        String res = "======Passengers=====";
-        for(Person person:Persons)
-        {
-            res+="\n"+person.getFullname();
-        }
-        res+="\n";
-
-        System.out.println(res);
+        System.out.println("======Passengers=====");
+        for (Person p : Persons) {
+            System.out.println(p);}
     }
     
     public static void Check(boolean checkVal)
     {
-        // if(checkVal==true)
-        // {
-        //     System.out.println("Person is in the vehicle");
-        // }
-        // else
-        // {
-        //     System.out.println("Person is not in the vehicle");
-        // }
-
-        //Utilizing Ternary Operators
         System.out.println(checkVal?"Person is in the vehicle":"Person is not in the vehicle");
     }
     
@@ -193,7 +197,6 @@ public class Main
         double Weight =  input.nextDouble();
         System.out.print("Enter Occupation:");
         String PersonType =  input.nextLine();
-        System.out.println("Finished? Press Enter");
 
         return new Person(Lname, Fname, age, Height, Weight, PersonType);
     }

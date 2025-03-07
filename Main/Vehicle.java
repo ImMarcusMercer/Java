@@ -36,7 +36,7 @@ public class Vehicle {
         {
             this.Passengers.add(newPassenger);
             this.increasePassengers();
-            System.out.println("\n"+newPassenger.getFullname()+" has entered the "+this.Name+".");
+            System.out.println(newPassenger.getFullname()+" has entered the "+this.Name+".");
         }
         else if(this.passengerCount >= this.maxPassengers)
         {

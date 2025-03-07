@@ -2,11 +2,11 @@ package Comparator;
 
 import Main.Person;
 import java.util.Comparator;
-
-public class FullnameComparator implements Comparator<Person>{
+public class BMIComparator implements Comparator<Person>
+{
     @Override
     public int compare(Person p1, Person p2)
     {
-        return p1.getFullname().compareTo(p2.getFullname());
+        return Double.compare(p1.getBMI(), p2.getBMI());
     }
 }

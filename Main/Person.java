@@ -52,6 +52,6 @@ public class Person {
     @Override
     public String toString()
     {
-        return String.format("\nName: %s, %s\nAge: %d\nHeight: %s\nWeight: %s\nBody Mass Index: %f\nType: %s", this.Lname, this.Fname, this.age,this.Height,this.Weight,this.getBMI(),this.PersonType);
+        return String.format("Name: %s, %s\tAge: %d\t\tHeight: %s\tWeight: %s\tBody Mass Index: %f\tType: %s", this.Lname, this.Fname, this.age,this.Height,this.Weight,this.getBMI(),this.PersonType);
     }
 }
