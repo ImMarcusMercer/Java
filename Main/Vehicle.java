@@ -1,6 +1,8 @@
 package Main;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class Vehicle {
     String Name, PlateNum;
@@ -72,14 +74,14 @@ public class Vehicle {
     /**Sort passengers based on Last Name, Full Name, Age,
      * BMI, PersonType
      */
-    public void sortPassengers()
-    {
-
+    public void sortPassengers(Comparator<Person> comparator) {
+        this.Passengers.sort(comparator);
     }
-    public void swapPassengers()
-    {
 
+    public void swapPassengers(int index1, int index2) {
+        Collections.swap(this.Passengers, index1, index2);
     }
+    
     public String getSeatArrangement()
     {
         int count=1;
