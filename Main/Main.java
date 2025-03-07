@@ -87,8 +87,9 @@ public class Main
                     SORTER:
                     while(true)
                     {
+                        System.out.println();
                         showPassengers();
-                        System.out.println("1: Create New Person\n2: Sort\n0: Retire");
+                        System.out.println("1: Create New Person\n2: Sort\n0: Retire\nChoice: ");
                         String choice2= Prompt("Enter Choice: ");
                         switch (choice2) 
                         {
@@ -132,6 +133,11 @@ public class Main
             }
         }
     }
+    public static String Prompt(String value)
+    {
+        String answer = input.nextLine();
+        return answer;
+    }
 
 
     public static void showVehicles()
@@ -171,32 +177,23 @@ public class Main
         //Utilizing Ternary Operators
         System.out.println(checkVal?"Person is in the vehicle":"Person is not in the vehicle");
     }
-    //Method Overloading
-    public static String Prompt(String Value)
-    {
-        System.out.print(Value);
-        return input.nextLine();
-    }
-    public static Integer Prompt(Integer Value)
-    {
-        System.out.print(Value);
-        return input.nextInt();
-    }
-    public static Double Prompt(Double Value)
-    {
-        System.out.print(Value);
-        return input.nextDouble();
-    }
-
+    
 
     public static Person createNewPerson()
     {
-        String Lname = Prompt("Enter Last Name:");
-        String Fname = Prompt("Enter First Name:");
-        int age = Prompt(Integer.valueOf("Enter Last Name:"));
-        double Height = Prompt(Integer.valueOf("Enter Last Name:"));
-        double Weight = Prompt(Integer.valueOf("Enter Last Name:"));
-        String PersonType = Prompt("Enter Last Name:");
+        System.out.print("Enter Last Name:");
+        String Lname = input.nextLine();
+        System.out.print("Enter First Name:");
+        String Fname = input.nextLine();
+        System.out.print ("Enter Age:");
+        int age = input.nextInt();
+        System.out.print("Enter Height(cm):");
+        double Height =  input.nextDouble();
+        System.out.print("Enter Weight(kg):");
+        double Weight =  input.nextDouble();
+        System.out.print("Enter Occupation:");
+        String PersonType =  input.nextLine();
+        System.out.println("Finished? Press Enter");
 
         return new Person(Lname, Fname, age, Height, Weight, PersonType);
     }
@@ -207,10 +204,12 @@ public class Main
         String Name;
         String PlateNum;
         int maxPass;
-        Name = Prompt("Enter Vehicle Name: ");
-        PlateNum = Prompt("Enter Vehicle Plate Number: ");
-        maxPass = Prompt(Integer.valueOf("Enter Max Capacity: "));
-
+        System.out.println("Enter Vehicle Name: ");
+        Name = input.nextLine();
+        System.out.println("Enter Vehicle Plate Number: ");
+        PlateNum=input.nextLine();
+        System.out.println(Integer.valueOf("Enter Max Capacity: "));
+        maxPass = input.nextInt();
         return new Vehicle(Name, PlateNum, maxPass);
     }
     public static void sortPeople(ArrayList<Person> people, Comparator<Person> comparator) 
